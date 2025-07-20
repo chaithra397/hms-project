@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CityCare Hospital</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #d0eafc, #f9f9f9);
+      animation: gradientChange 10s infinite alternate;
+    }
+
+    @keyframes gradientChange {
+      from { background-color: #f1f8ff; }
+      to { background-color: #e3f2fd; }
+    }
+
+    header {
+      background-color: #0077b6;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    nav {
+      background-color: #023e8a;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd60a;
+    }
+
+    section {
+      display: none;
+      padding: 30px;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    form {
+      background-color: white;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #0077b6;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      margin-top: 15px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #023e8a;
+    }
+
+    footer {
+      background-color: #caf0f8;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+
+    .response {
+      background-color: #d4edda;
+      color: green;
+      margin-top: 10px;
+      padding: 10px;
+      border-left: 4px solid green;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  🏥 CityCare Hospital Management System
+</header>
+
+<nav>
+  <a href="#" onclick="showPage('home')">Home</a>
+  <a href="#" onclick="showPage('about')">About Us</a>
+  <a href="#" onclick="showPage('contact')">Contact</a>
+  <a href="#" onclick="showPage('register')">Doctor Registration</a>
+  <a href="#" onclick="showPage('appointment')">Book Appointment</a>
+  <a href="#" onclick="showPage('billing')">Billing</a>
+</nav>
+
+<section id="home" class="active">
+  <h2>Welcome to CityCare Hospital</h2>
+  <img src="https://thebirmgroup.com/wp-content/uploads/2018/07/ThinkstockPhotos-510351863.jpg" width="500" height="500" alt="Placeholder image">
+
+  <p>We provide 24/7 emergency care, advanced surgery, diagnostics, and experienced doctors across all departments.</p>
+</section>
+
+<section id="about">
+  <h2>About Us</h2>
+  <img src="https://media.istockphoto.com/photos/modern-hospital-building-picture-id1312706413?b=1&k=20&m=1312706413&s=170667a&w=0&h=VRi3w2E1UqvCCcK-nDV6mH7FhDZoTU9MM2QKSom96X4=" alt="About Us">
+  <p>CityCare Hospital is known for world-class healthcare services. Founded in 2000, we have served over 1 million patients with compassion and care.</p>
+</section>
+
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>📍 Address: 123 Health Lane, Wellness City</p>
+  <p>📞 Phone: +91 9876543210</p>
+  <p>📧 Email: contact@citycarehospital.com</p>
+</section>
+
+<section id="register">
+  <h2>Doctor Registration</h2>
+  <form onsubmit="event.preventDefault(); showMessage('docMessage')">
+    <label>Doctor Name:</label>
+    <input type="text" required>
+    <label>Specialization:</label>
+    <input type="text" required>
+    <label>Contact Number:</label>
+    <input type="tel" required>
+    <button type="submit">Register</button>
+    <div id="docMessage" class="response">Doctor Registered Successfully!</div>
+  </form>
+</section>
+
+<section id="appointment">
+  <h2>Book Appointment</h2>
+  <form onsubmit="event.preventDefault(); showMessage('apptMessage')">
+    <label>Patient Name:</label>
+    <input type="text" required>
+    <label>Department:</label>
+    <select>
+      <option>Cardiology</option>
+      <option>Neurology</option>
+      <option>Orthopedics</option>
+      <option>Pediatrics</option>
+    </select>
+    <label>Date:</label>
+    <input type="date" required>
+    <button type="submit">Book</button>
+    <div id="apptMessage" class="response">Appointment Booked!</div>
+  </form>
+</section>
+
+<section id="billing">
+  <h2>Billing</h2>
+  <form onsubmit="event.preventDefault(); showMessage('billMessage')">
+    <label>Patient Name:</label>
+    <input type="text" required>
+    <label>Consultation Fee (₹):</label>
+    <input type="number" required>
+    <label>Medicine Charges (₹):</label>
+    <input type="number">
+    <label>Other Charges (₹):</label>
+    <input type="number">
+    <button type="submit">Generate Bill</button>
+    <div id="billMessage" class="response">Bill Generated Successfully!</div>
+  </form>
+</section>
+
+<footer>
+  &copy; 2025 CityCare Hospital. Designed with ❤️
+</footer>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function showMessage(id) {
+    const msg = document.getElementById(id);
+    msg.style.display = 'block';
+    setTimeout(() => msg.style.display = 'none', 3000);
+  }
+</script>
+
+</body>
+</html>
